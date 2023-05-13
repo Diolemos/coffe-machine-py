@@ -31,17 +31,26 @@ resources = {
 }
 #quarters = $0.25, dimes = $0.10, nickles = $0.05, pennies = $0.01
 ballance = 0
+isMachineOn = True 
+while isMachineOn == True:
+    userChoice = input("\nWhat would you like? (espresso/latte/cappuccino):").lower()
 
-userChoice = input("What would you like? (espresso/latte/cappuccino):").lower()
+    def check_resources():
+        
 
-if(userChoice == 'report'):
-    print(f"Water: {resources['water']}")
-    print(f"Milk: {resources['milk']}")
-    print(f"Coffee: {resources['coffee']}")
-    print(f"Money: ${ballance}")
-    
-# uncomment this when the playgame() function is created.
-# if(userChoice == 'off'):
-#     print("Good bye.")
-    # return    
-    
+    if(userChoice == 'report'):
+        print(f"Water: {resources['water']}")
+        print(f"Milk: {resources['milk']}")
+        print(f"Coffee: {resources['coffee']}")
+        print(f"Money: ${ballance}")
+        
+    # uncomment this when the playgame() function is created.
+    # if(userChoice == 'off'):
+    #     print("Good bye.")
+        # return    
+    if userChoice == 'water':
+        pass 
+    elif userChoice == 'milk':
+        pass
+    elif userChoice == 'coffee':
+        pass   
