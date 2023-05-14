@@ -23,7 +23,7 @@ MENU = {
         "cost": 3.0,
     }
 }
-
+resources_history = []
 resources = {
     "water": 300,
     "milk": 200,
@@ -51,7 +51,15 @@ while isMachineOn == True:
                print(f"Sorry, there is not enough {ingredient}")        
        return areResourcesSufficient       
        
-       
+    def update_resources(item=userChoice, resources=resources, MENU=MENU):
+        updated_resources = resources
+        #retrieve ingredients dictionary for the user's choice
+        ingredients = MENU[item]['ingredients']
+        for ingredient in ingredients:
+            updated_resources[ingredient] = resources[ingredient] - ingredients[ingredient]   
+        
+        return updated_resources
+        
  
         
         
@@ -84,8 +92,19 @@ while isMachineOn == True:
              print(f"Sorry, not enough money.${user_inserted_value} Refunded.")
          elif user_inserted_value > MENU[userChoice]['cost']:
               ballance += MENU[userChoice]['cost']
+              
+              resources_history.append(resources)
+              resources= update_resources()
+              
               change = round(user_inserted_value - MENU[userChoice]['cost'],2) 
               print(f"here is your ${change} dollars in change.")   
+         else:  
+             ballance += MENU[userChoice]['cost'] 
              
+             resources_history.append(resources)
+             resources= update_resources()
+             
+             print(f"Here is your {userChoice}, enjoy!")  
             
  
+        
