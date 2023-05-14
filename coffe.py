@@ -25,32 +25,46 @@ MENU = {
 }
 
 resources = {
-    "water": 300,
+    "water": 30,
     "milk": 200,
     "coffee": 100,
 }
 #quarters = $0.25, dimes = $0.10, nickles = $0.05, pennies = $0.01
 ballance = 0
-isMachineOn = True 
+isMachineOn = True
+
+    
 while isMachineOn == True:
     userChoice = input("\nWhat would you like? (espresso/latte/cappuccino):").lower()
 
-    def check_resources():
+    def check_resources(item=userChoice,resources=resources,MENU=MENU): 
+       #check if item requirement is satisfied by resources 
+       
+       if resources['water'] < MENU[item]['ingredients']['water']:
+           print("Sorry, There is not enough water.")
+           return
+       elif resources['coffee'] < MENU[item]['ingredients']['coffee']:
+           print("Sorry, There is not enough coffee.") 
+           return
+       elif resources['milk'] < MENU[item]['ingredients']['milk']:
+           print("Sorry, There is not enough milk.")
+           return       
         
+        
+    if userChoice =='off':
+        print('good bye!')
+        isMachineOn = False 
 
-    if(userChoice == 'report'):
+    elif(userChoice == 'report'):
         print(f"Water: {resources['water']}")
         print(f"Milk: {resources['milk']}")
         print(f"Coffee: {resources['coffee']}")
         print(f"Money: ${ballance}")
         
-    # uncomment this when the playgame() function is created.
-    # if(userChoice == 'off'):
-    #     print("Good bye.")
-        # return    
-    if userChoice == 'water':
-        pass 
-    elif userChoice == 'milk':
-        pass
-    elif userChoice == 'coffee':
-        pass   
+    elif userChoice not in MENU:
+       print('no such option')
+       
+    else:
+        check_resources()
+        
+ 
