@@ -25,7 +25,7 @@ MENU = {
 }
 
 resources = {
-    "water": 30,
+    "water": 300,
     "milk": 200,
     "coffee": 100,
 }
@@ -39,16 +39,17 @@ while isMachineOn == True:
 
     def check_resources(item=userChoice,resources=resources,MENU=MENU): 
        #check if item requirement is satisfied by resources 
-       
+       areResourcesSufficient = True
        if resources['water'] < MENU[item]['ingredients']['water']:
            print("Sorry, There is not enough water.")
-           return
+           areResourcesSufficient = False
        elif resources['coffee'] < MENU[item]['ingredients']['coffee']:
            print("Sorry, There is not enough coffee.") 
-           return
+           areResourcesSufficient = False
        elif resources['milk'] < MENU[item]['ingredients']['milk']:
            print("Sorry, There is not enough milk.")
-           return       
+           areResourcesSufficient = False
+           return areResourcesSufficient       
         
         
     if userChoice =='off':
@@ -65,6 +66,7 @@ while isMachineOn == True:
        print('no such option')
        
     else:
-        check_resources()
+     if   check_resources():
+         
         
  
