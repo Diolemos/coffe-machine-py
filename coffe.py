@@ -97,7 +97,8 @@ while isMachineOn == True:
               resources= update_resources()
               
               change = round(user_inserted_value - MENU[userChoice]['cost'],2) 
-              print(f"here is your ${change} dollars in change.")   
+              print(f"here is your ${change} dollars in change.") 
+              print(f"and Here is your {userChoice}, enjoy!")   
          else:  
              ballance += MENU[userChoice]['cost'] 
              
@@ -107,4 +108,4 @@ while isMachineOn == True:
              print(f"Here is your {userChoice}, enjoy!")  
             
  
-        
+         
