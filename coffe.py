@@ -29,10 +29,12 @@ resources = {
     "milk": 200,
     "coffee": 100,
 }
+
 #quarters = $0.25, dimes = $0.10, nickles = $0.05, pennies = $0.01
 ballance = 0
 isMachineOn = True
 
+    
     
 while isMachineOn == True:
     userChoice = input("\nWhat would you like? (espresso/latte/cappuccino):").lower()
@@ -67,6 +69,16 @@ while isMachineOn == True:
        
     else:
      if   check_resources():
+         #process payment
+         user_inserted_value = 0
+         quarters = int(input('how many quarters?'))
+         user_inserted_value += quarters * 0.25
+         dimes = int(input('How many dimes?'))
+         user_inserted_value += dimes * 0.10
+         nickles = int(input('how many nickles?'))
+         user_inserted_value += nickles * 0.05
+         pennies = int(input('how many pennies'))
+         user_inserted_value += pennies * 0.01
          
         
  
