@@ -42,16 +42,17 @@ while isMachineOn == True:
     def check_resources(item=userChoice,resources=resources,MENU=MENU): 
        #check if item requirement is satisfied by resources 
        areResourcesSufficient = True
-       if resources['water'] < MENU[item]['ingredients']['water']:
-           print("Sorry, There is not enough water.")
-           areResourcesSufficient = False
-       elif resources['coffee'] < MENU[item]['ingredients']['coffee']:
-           print("Sorry, There is not enough coffee.") 
-           areResourcesSufficient = False
-       elif resources['milk'] < MENU[item]['ingredients']['milk']:
-           print("Sorry, There is not enough milk.")
-           areResourcesSufficient = False
-           return areResourcesSufficient       
+       #retrieve ingredients dictionary 
+       ingredients = MENU[item]['ingredients']
+       for ingredient, quantity in ingredients.items():
+                    
+           if resources[ingredient] < quantity:
+               areResourcesSufficient = False
+               print(f"Sorry, there is not enough {ingredient}")        
+       return areResourcesSufficient       
+       
+       
+ 
         
         
     if userChoice =='off':
@@ -79,6 +80,12 @@ while isMachineOn == True:
          user_inserted_value += nickles * 0.05
          pennies = int(input('how many pennies'))
          user_inserted_value += pennies * 0.01
-         
-        
+         if user_inserted_value < MENU[userChoice]['cost']:
+             print(f"Sorry, not enough money.${user_inserted_value} Refunded.")
+         elif user_inserted_value > MENU[userChoice]['cost']:
+              ballance += MENU[userChoice]['cost']
+              change = round(user_inserted_value - MENU[userChoice]['cost'],2) 
+              print(f"here is your ${change} dollars in change.")   
+             
+            
  
